@@ -16,7 +16,7 @@ const ImgDetail = () => {
             <div className='flex justify-center'>
                 {images.map((image, index) => {
                     return (
-                        <img src={image} key={index} alt="image" srcSet="" className={`lg:h-[7rem] h-[5rem] lg:w-[8rem] w-[5rem] cursor-pointer  mx-1 my-2 ${selectedImg === image ? 'border-4 border-gray-600' : ''}`} onClick={
+                        <img src={image} key={index} alt="image" srcSet="" className={`lg:h-[7rem] h-[5rem] lg:w-[8rem] w-[5rem] cursor-pointer shadow-2xl  mx-1 my-2 ${selectedImg === image ? 'border-4 border-gray-600' : ''}`} onClick={
                             () => setSelectedImg(image)} />
                     )
                 })}

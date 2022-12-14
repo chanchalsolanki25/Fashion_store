@@ -75,7 +75,7 @@ const Checkout = () => {
     }
 
     return (
-        <div className='absolute top-28 flex md:flex-row flex-col w-[80%]'>
+        <div className='relative top-28 flex md:flex-row flex-col h-[50vh] w-[100%]'>
             {/* Payment mode */}
             <div className=' px-10 py-8 bg-slate-50 w-[25rem] mx-auto basis-[50%]'>
                 <div className='flex ' onClick={() => razorpayMode(Math.ceil(totalPrice - totalDiscount))}>

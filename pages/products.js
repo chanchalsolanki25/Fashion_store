@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../components/Footer';
 import { fetchData, addWishlist, fetchCategoryProduct, recentlyViewed } from '../redux/action/ActionType';
 
 const GetData = () => {
@@ -16,9 +17,9 @@ const GetData = () => {
   }, []);
 
   const handleCategory = (category, item) => {
-    const sortedViewed = viewedProducts?.filter((viewedP)=> viewedP.id === item.id);
+    const sortedViewed = viewedProducts?.filter((viewedP) => viewedP.id === item.id);
     dispatch(fetchCategoryProduct(category));
-    if(sortedViewed.length === 0){      
+    if (sortedViewed.length === 0) {
       dispatch(recentlyViewed(item));
     }
   }
@@ -36,7 +37,7 @@ const GetData = () => {
 
   return (
     <>
-      <div className='grid mt-6 sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-center relative top-14'>
+      <div className='grid mt-6 sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-center relative top-14 h-full'>
         {search !== null && search !== undefined && search.length > 0 ? search.map((item, id) => {
           return (
             <div className='my-3 h-auto rounded-md p-4 hover:shadow-2xl mx-auto' key={id} >
@@ -84,6 +85,7 @@ const GetData = () => {
             )
           })}
       </div>
+     { data?.length !== 0 && <Footer />}
     </>
   )
 }

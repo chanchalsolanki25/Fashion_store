@@ -7,6 +7,7 @@ import { addCart, addWishlist, removeSelectedProduct, productDetail, fetchCatego
 import ImgDetail from '../../components/imgDetail';
 import { useState } from 'react';
 import Head from 'next/head';
+import Footer from '../../components/Footer';
 
 const Detail = () => {
   const { query } = useRouter();
@@ -32,25 +33,25 @@ const Detail = () => {
 
 
   // Increase Product Quantity 
-  const increaseQty = (id,stock) => {
+  const increaseQty = (id, stock) => {
     if (quantity < stock) {
       setQuantity(quantity + 1);
-        if(productsDetail.id === id){
-        dispatch(productQuantuty(id,quantity+1));
+      if (productsDetail.id === id) {
+        dispatch(productQuantuty(id, quantity + 1));
         setQtyFlag(true);
-        }
-      
+      }
+
     }
   }
-  
+
   // Decrease Product Quantity 
   const decreaseQty = (id) => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-        if(productsDetail.id === id){
-        dispatch(productQuantuty(id,quantity-1));
+      if (productsDetail.id === id) {
+        dispatch(productQuantuty(id, quantity - 1));
         setQtyFlag(true);
-        }
+      }
     }
   }
 
@@ -62,13 +63,15 @@ const Detail = () => {
 
       if (data.length === 0) {
         dispatch(addCart(item));
-         if(!qtyFlag){
-           dispatch(productQuantuty(item.id,quantity));
-         }
+        if (!qtyFlag) {
+          dispatch(productQuantuty(item.id, quantity));
+        }
       }
     }
     else {
       router.push('/login');
+      alert('Please use this data to get entered :- \n username: kminchelle \n password: 0lelplR');
+
     }
   }
 
@@ -84,11 +87,11 @@ const Detail = () => {
   }
   return (
     <>
-      <div className='relative top-20'>
+      <div className='relative top-20 lg:w-auto w-[100vw]'>
         {Object.keys(productsDetail).length === 0 ?
           <div className='text-2xl font-semibold'>Loading...</div> :
-          <div>
-            <div className='flex md:flex-row flex-col' style={{ height: '60vh' }}>
+          <div className=''>
+            <div className='flex md:flex-row flex-col lg:w-auto w-full'>
 
               <ImgDetail />
 
@@ -99,13 +102,12 @@ const Detail = () => {
                   <div className='bg-green-600  flex py-1 px-1 my-2 w-16 align-middle text-white text-center rounded-sm ml-3'>{productsDetail.rating}<i className="fa fa-star my-auto mx-1"></i>
                   </div>
                   <div className='flex text-white' style={{ alignItems: 'center' }}>
-                    <button className='mx-1 px-2 h-8 bg-slate-500 rounded-md' onClick={() => increaseQty(productsDetail.id,productsDetail.stock)}>+</button>
+                    <button className='mx-1 px-2 h-8 bg-slate-500 rounded-md' onClick={() => increaseQty(productsDetail.id, productsDetail.stock)}>+</button>
                     <input type="text" name="qty" id="qty" value={quantity} className='text-black text-center w-10 border-2 h-8' />
                     <button className='mx-1 px-2 h-8 bg-slate-500 rounded-md' onClick={() => decreaseQty(productsDetail.id)}>-</button>
                   </div>
                 </div>
                 <hr className='mx-4' />
-
 
                 <div className='my-5 flex mx-2'>
                   <p className='md:text-2xl text-xl font-mono ml-3 font-semibold'><i className="fa fa-rupee" />{Math.floor(productsDetail.price - productsDetail.discountPercentage)}</p>
@@ -125,9 +127,9 @@ const Detail = () => {
             </div>
 
             {/* Same category's products */}
-            <div className=' relative md:top-10 mx-4 sm:top-72 vsm:top-[15rem] top-[16rem] md:w-auto w-full'>
+            <div className=' relative md:top-10 mx-4 sm:top-[1rem] vsm:top-[1rem] top-[1rem] h-auto'>
               <h1 className='md:text-2xl text-xl my-7 font-bold '>Similar Products</h1>
-              <div className='grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2  mt-6  justify-center '>
+              <div className='grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2  mt-6  justify-center lg:w-auto '>
                 {categoryProduct?.map((item, id) => {
                   return (
                     <div className='hover:shadow-2xl md:h-auto h-72 :w-60  lg:mx-4 mx-1  border-2 mb-5 ' key={id}>
@@ -139,18 +141,20 @@ const Detail = () => {
                         </div>
                         <div className='bg-green-600  flex py-1 px-1 my-2 w-16 align-middle text-white text-center rounded-sm ml-3'>{item.rating}<i className="fa fa-star my-auto mx-1" />
                         </div>
-                        <h3 className='font-bold lg:my-4 my-2 lg:text-lg text-sm ml-3'>{item?.title.length > 20 ? `${item?.title.slice(0, 20)}...` : item.title}</h3>
-                        <p className='text-gray-500 lg:ml-3 mx-1 md:block hidden'>${item?.description.length > 40 ? `${item?.description.slice(0, 40)}...` : item.description}</p>
-                        <div className="flex justify-between w-60">
-                          <p className='text-lg font-mono ml-3'>Rs:{item.price}</p>
-                        </div>
+                        <h1 className='font-bold lg:my-4 my-2 lg:text-lg text-sm ml-3'>{item?.title.length > 20 ? `${item?.title.slice(0, 20)}...` : item.title}</h1>
+                        <p className='text-gray-500 lg:ml-3 mx-1 md:text-lg text-[14px]'>${item?.description.length > 40 ? `${item?.description.slice(0, 35)}...` : item.description}</p>
+                        <p className='text-lg font-mono ml-3'>Rs:{item.price}</p>
                       </div>
+
                     </div>
                   )
                 })}
               </div>
             </div>
-          </div>}
+
+            <Footer />
+          </div>
+        }
       </div>
     </>
   )

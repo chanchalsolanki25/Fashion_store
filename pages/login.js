@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center h-[60vh]'>
       <div className="w-full max-w-md absolute top-32">
         <h1 className='text-center text-4xl my-3 text-gray-900 font-serif'>Login</h1>
         <form className="bg-zinc-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">

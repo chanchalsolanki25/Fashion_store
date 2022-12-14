@@ -64,9 +64,70 @@ const Deal = () => {
             description: 'Stylish Earrings',
             image: 'img/deal/jewellery.jpg'
         },
+
+        {
+            name: 'VERSACE',
+            description: 'Small shoulder bag',
+            image: 'img/deal/bags.jpg'
+        },
+        {
+            name: 'ORRA',
+            description: 'Pure cotton T-shirt',
+            image: 'img/deal/bangles.jpg'
+        },
+        {
+            name: 'HUDA',
+            description: 'Stylish sling bag',
+            image: 'img/deal/huda-makeup.jpg'
+        },
+        {
+            name: 'ARMANI',
+            description: 'women stylish hoddie and pant',
+            image: 'img/deal/hoddie.jpg'
+        },
+        {
+            name: 'PC Jewellers',
+            description: 'Solid leather jacket',
+            image: 'img/deal/ring.jpg'
+        },
+        {
+            name: 'ADIDAS',
+            description: 'Mac eye shadow palette',
+            image: 'img/deal/shoes.jpg'
+        },
+        {
+            name: 'ROLEX',
+            description: 'Men printed Hoddie',
+            image: 'img/deal/watch.jpg'
+        },
+        {
+            name: 'HIGHLANDER',
+            description: 'Men Solid Sweatshirt',
+            image: 'img/deal/sweatshirt.jpg'
+        },
+        {
+            name: 'LEVIS',
+            description: 'Solid Women T-shirt',
+            image: 'img/deal/t-shirt.jpg'
+        },
+        {
+            name: 'HERE&NOW',
+            description: 'White puff sleeves T-shirt',
+            image: 'img/deal/top.jpg'
+        },
+        {
+            name: ' HUGO BOSS',
+            description: 'Maroon Sheath Midi Dress',
+            image: 'img/deal/western.jpg'
+        },
+        {
+            name: 'TANISHQ',
+            description: 'Stylish Earrings',
+            image: 'img/deal/jewellery.jpg'
+        },
     ]
     return (
-        <div className='relative lg:top-28 top-24'>
+        <div className='relative lg:top-28 top-24 bg-white '>
             <div className=' text-center'>
                 <h1 className='text-red-800 lg:text-5xl md:text-3xl text-2xl font-bold font-serif'>OMG!</h1>
                 <h1 className='lg:text-3xl md:text-xl text-sm text-yellow-500 font-bold font-serif'>DEALS</h1>

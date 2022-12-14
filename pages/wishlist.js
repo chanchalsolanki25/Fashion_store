@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../components/Footer';
 import { removeWishListItem, addCart } from '../redux/action/ActionType'
 
 const Wishlist = () => {
@@ -34,6 +35,7 @@ const Wishlist = () => {
   }
 
   return (
+    <>
     <div className='relative top-20'>
       {wishlistItem !== undefined && wishlistItem.length > 0 ?
         <div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 grid-cols-1'>
@@ -61,9 +63,11 @@ const Wishlist = () => {
             )
           })}
         </div> :
-        <div className='lg:text-5xl md:text-4xl text-2xl text-center mt-11'>Empty Wishlist!<i className="fa fa-heart" aria-hidden="true" /></div>
+        <div className='lg:text-5xl md:text-4xl text-2xl text-center mt-11 h-[30vh]'>Empty Wishlist!<i className="fa fa-heart" aria-hidden="true" /></div>
       }
     </div>
+    <Footer/>
+    </>
   )
 }
 

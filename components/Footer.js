@@ -3,10 +3,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='relative top-40'>
-      <div>
-        <Link href='/'><h1 className='text-lg font-semibold font-sans text-center py-3 bg-gray-700 text-white cursor-pointer'>Back to Top</h1></Link>
-      </div>
+    <div className='relative top-40 w-full '>
+
       <div className='grid grid-cols-4 bg-slate-800 text-center text-white h-[50vh]'>
 
         <div className='my-4'>

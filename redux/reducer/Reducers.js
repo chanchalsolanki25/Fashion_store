@@ -37,7 +37,7 @@ export const Reducers = (state = initialState, { type, payload }) => {
 
             return {
                 ...state,
-                categoryProduct: payload
+                categoryProduct: payload,
             }
 
         case 'PRODUCT_DETAIL':

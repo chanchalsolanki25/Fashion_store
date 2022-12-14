@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { searchProduct, clearLogin, clearAddress,clearOrder } from '../redux/action/ActionType'
+import { searchProduct, clearLogin, clearAddress, clearOrder, removeAll } from '../redux/action/ActionType'
 import { useDispatch, useSelector } from 'react-redux'
 import NavLinks from './navLinks'
 import { useRouter } from 'next/router'
@@ -16,6 +16,7 @@ const Navbar = () => {
     const dispatech = useDispatch();
     const cartItems = useSelector(state => state.CartReducers.cart);
     const loginData = useSelector(state => state.LoginReducer.logInUser);
+
     const { image } = loginData;
 
 
@@ -38,9 +39,11 @@ const Navbar = () => {
     const handleLogin = () => {
         if (loginData) {
             router.push('/login');
+            alert('Please use this data to get entered :- \n username: kminchelle \n password: 0lelplR');
             dispatech(clearLogin());
             dispatech(clearAddress());
             dispatech(clearOrder());
+            dispatech(removeAll());
         }
     }
 
@@ -79,13 +82,13 @@ const Navbar = () => {
                                 })
                             }</div>
 
-                            <div className='absolute top-[2rem] left-[5rem] bg-white text-black hidden group-hover:block hover:block shadow-xl'>
+                            <div className='absolute md:top-[2rem] md:left-[5rem] bg-white text-black hidden group-hover:block hover:block shadow-xl'>
                                 <p className='py-2 px-2 hover:text-gray-400' onClick={() => handleLogin()}>
                                     {loginData.length === 0 ? 'Login' : 'Logout'}
                                 </p>
-                                <Link href='/orders'>
+                                {loginData.length !== 0 && <Link href='/orders'>
                                     <p className='pb-2 px-2 hover:text-gray-400'>Your Order</p>
-                                </Link>
+                                </Link>}
                             </div>
                         </div>
                         {/* menu list */}
@@ -93,6 +96,7 @@ const Navbar = () => {
 
                     </div>
                 </div>
+
                 {/* Profile, whishlist & cart section */}
                 <div className='lg:w-[40%] md:[50%] w-[60%] flex flex-row md:justify-around justify-end text-gray-600'>
                     {/* search icon in small screen */}
@@ -124,9 +128,9 @@ const Navbar = () => {
                                 <p className='py-2 px-2 hover:text-gray-400' onClick={() => handleLogin()}>
                                     {loginData.length === 0 ? 'Login' : 'Logout'}
                                 </p>
-                                <Link href='/orders'>
+                                {loginData.length !== 0 && <Link href='/orders'>
                                     <p className='pb-2 px-2 hover:text-gray-400'>Your Order</p>
-                                </Link>
+                                </Link>}
                             </div>
                         </div>
                         <Link href={`/wishlist`} >
